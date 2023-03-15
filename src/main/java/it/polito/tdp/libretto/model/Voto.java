@@ -2,7 +2,7 @@ package it.polito.tdp.libretto.model;
 
 import java.time.LocalDate;
 
-public class Voto {
+public class Voto implements Comparable<Voto>{
 	
 	private String corso;
 	private int punti; // da 18 a 31
@@ -13,6 +13,13 @@ public class Voto {
 		this.corso = corso;
 		this.punti = punti;
 		this.dataEsame = dataEsame;
+	}
+	
+	//Copy constructor di voto
+	public Voto(Voto v) {
+		this.corso = v.corso;
+		this.punti = v.punti;
+		this.dataEsame = v.dataEsame;
 	}
 
 	public String getCorso() {
@@ -43,5 +50,22 @@ public class Voto {
 	public String toString() {
 		return "Voto [corso = " + corso + ", voto = " + punti + ", data Esame = " + dataEsame + "]";
 	}
+	
+	public boolean isDuplicato(Voto altro) {
+		return this.getCorso().equals(altro.getCorso()) && this.getPunti() == altro.getPunti();
+	}
 
+	public boolean isConflitto(Voto altro) {
+		return this.getCorso().equals(altro.getCorso()) && this.getPunti() != altro.getPunti();
+	}
+	
+	public Voto clone() {
+		return new Voto(this.corso, this.punti, this.dataEsame);
+	}
+
+	@Override
+	public int compareTo(Voto other) {
+		// TODO calcola this - other
+		return 0;
+	}
 }
