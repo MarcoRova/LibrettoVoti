@@ -22,11 +22,10 @@ public class App extends Application {
     	Parent root = loader.load();
     	Scene scene = new Scene(root) ;
     	
-    	Libretto model = new Libretto();
-    	Controller controller = loader.getController();
-    	controller.setModel(model);
+    	Libretto model = new Libretto(); // creo il modello
+    	Controller controller = loader.getController(); // creo riferimento classe controller creato
+    	controller.setModel(model); // lavora su questo modello
     	
-
     	stage.setScene(scene);
         stage.show();
     }

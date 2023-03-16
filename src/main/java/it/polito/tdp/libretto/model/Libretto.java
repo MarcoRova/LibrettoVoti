@@ -34,6 +34,14 @@ public class Libretto {
 		}
 	}
 	
+	public String toString() {
+		String txt = "";
+		for(Voto v:voti) {
+			txt = txt + v.toString() +"\n";
+		}
+		return txt;
+	}
+	
 	public void stampaPuntiUguali(int valore) {
 		for(Voto v:voti) {
 			if(v.getPunti()==valore)
